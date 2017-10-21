@@ -18,12 +18,13 @@ function save() {
 
 const publicAPI = {};
 // Add API
-publicAPI.add = (title, infoList, color) => {
+publicAPI.add = (title, infoList, color, whiteboardId) => {
   const guid = uuid();
   notes[guid] = {
     title,
     infoList,
     color,
+    whiteboardId,
   };
   save();
   return guid;
@@ -46,10 +47,28 @@ publicAPI.getAll = () => {
       title: notes[id].title,
       infoList: notes[id].infoList,
       color: notes[id].color,
+      whiteboardId: notes[id].whiteboardId,
     });
   });
   return notesArray;
 };
+
+publicAPI.getAllWithWhiteboardId = (WhiteboardId) => {
+  const notesArray = [];
+  Object.keys(notes).forEach((id) => {
+    if (WhiteboardId === notes[id].whiteboardId) {
+      notesArray.push({
+        id,
+        title: notes[id].title,
+        infoList: notes[id].infoList,
+        color: notes[id].color,
+        whiteboardId: notes[id].whiteboardId,
+      });
+    }
+  });
+  return notesArray;
+};
+
 // Update API
 publicAPI.update = (note) => {
   notes[note.id].title = note.title;
