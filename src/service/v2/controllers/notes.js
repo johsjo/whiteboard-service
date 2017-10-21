@@ -16,12 +16,20 @@ const get = (req, res) => {
 const getAll = (req, res) => {
   res.json(notes.getAll());
 };
+
+// Get all notes with a specific whiteboard ID
+const getAllWithWhiteboardId = (req, res) => {
+  const id = req.params.id;
+  res.json(notes.getAllWithWhiteboardId(id));
+};
+
 // Remove Rest
 const remove = (req, res) => {
   const id = req.params.id;
   notes.remove(id);
   res.status(204).send();
 };
+
 // Add Rest
 const add = (req, res) => {
   const title = req.body.title;
@@ -31,6 +39,7 @@ const add = (req, res) => {
   const id = notes.add(title, infoList, color, whiteboardId);
   res.status(201).json({ id });
 };
+
 // Update Rest
 const update = (req, res) => {
   const id = req.params.id;
@@ -44,6 +53,7 @@ const update = (req, res) => {
 module.exports = {
   get,
   getAll,
+  getAllWithWhiteboardId,
   remove,
   add,
   update,

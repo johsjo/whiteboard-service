@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 
 const routesV1 = require('./v1/routes');
+const routesV2 = require('./v2/routes');
 const allowCrossOrigin = require('./v1/middleware/allowCrossOrigin');
 const logger = require('../utils/helpers/logger');
 
@@ -35,6 +36,7 @@ app.use(helmet.noCache());
 app.use(allowCrossOrigin);
 
 app.use('/v1', routesV1);
+app.use('/v2', routesV2);
 
 app.listen(8081, (err) => {
   if (err) {

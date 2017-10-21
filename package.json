@@ -10,7 +10,8 @@
     "start:dev": "nodemon .",
     "integration-test": "npm run copy-mock-localstorage-to-test & NODE_ENV=test node .",
     "newman": "newman run service-test.json",
-    "test": "npm run js-lint & newman run service-test.json"
+    "test-TODO": "npm run js-lint & newman run service-test.json",
+    "test": "npm run js-lint"
   },
   "author": "Johan Sjölander",
   "license": "ISC",
