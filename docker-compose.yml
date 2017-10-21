@@ -1,0 +1,13 @@
+version: '2'
+services:
+  #eget namn
+  service:
+    image: johsjo/whiteboard-service-1618
+    ports:
+      - "8081:8081"
+    restart: always
+  client:
+    image: johsjo/whiteboard-client-1618
+    ports:
+      - "8084:80"
+    restart: always
